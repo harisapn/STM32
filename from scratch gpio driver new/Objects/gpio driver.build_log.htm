@@ -1,0 +1,116 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Harisa Polutan-Nisic, student, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.7.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+C:\Users\Harisa\Desktop\from scratch gpio driver new\gpio driver.uvprojx
+Project File Date:  08/05/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_ld.s...
+_HAL_GPIO.c(8): warning: // comments are not allowed in this language [-Wcomment]
+        (0x00), // CRL pin 0
+                ^
+_HAL_GPIO.c(79): warning: operator '<<' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
+                                port ->CRH &=~((1<<PINPOS[pinNumber]) | (1<<PINPOS[pinNumber]+1));
+                                                                          ~~~~~~~~~~~~~~~~~~~^~
+_HAL_GPIO.c(79): note: place parentheses around the '+' expression to silence this warning
+                                port ->CRH &=~((1<<PINPOS[pinNumber]) | (1<<PINPOS[pinNumber]+1));
+                                                                                             ^
+                                                                            (                  )
+_HAL_GPIO.c(141): warning: no newline at end of file [-Wnewline-eof]
+                
+                ^
+3 warnings generated.
+compiling _HAL_GPIO.c...
+main.c(1): warning: In file included from...
+./_HAL_GPIO.c(8): warning: // comments are not allowed in this language [-Wcomment]
+        (0x00), // CRL pin 0
+                ^
+./_HAL_GPIO.c(79): warning: operator '<<' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
+                                port ->CRH &=~((1<<PINPOS[pinNumber]) | (1<<PINPOS[pinNumber]+1));
+                                                                          ~~~~~~~~~~~~~~~~~~~^~
+./_HAL_GPIO.c(79): note: place parentheses around the '+' expression to silence this warning
+                                port ->CRH &=~((1<<PINPOS[pinNumber]) | (1<<PINPOS[pinNumber]+1));
+                                                                                             ^
+                                                                            (                  )
+./_HAL_GPIO.c(141): warning: no newline at end of file [-Wnewline-eof]
+                
+                ^
+main.c(16): warning: implicit declaration of function 'config_init' [-Wimplicit-function-declaration]
+        config_init(mojulaz);
+        ^
+4 warnings generated.
+compiling main.c...
+RTE/Device/STM32F103C6/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+            ^
+RTE/Device/STM32F103C6/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+    ^
+1 warning generated.
+compiling system_stm32f10x.c...
+linking...
+.\Objects\gpio driver.axf: Error: L6200E: Symbol PINPOS multiply defined (by _hal_gpio.o and main.o).
+.\Objects\gpio driver.axf: Error: L6200E: Symbol gpio_write multiply defined (by _hal_gpio.o and main.o).
+.\Objects\gpio driver.axf: Error: L6200E: Symbol gpio_toggle multiply defined (by _hal_gpio.o and main.o).
+.\Objects\gpio driver.axf: Error: L6200E: Symbol gpio_init multiply defined (by _hal_gpio.o and main.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 4 error messages.
+".\Objects\gpio driver.axf" - 4 Error(s), 8 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack
+                Keil.STM32F1xx_DFP.2.4.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/STM32F103C6
+  ./RTE/_Target_1
+  C:/Users/Harisa/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/Harisa/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device/Source/system_stm32f10x.c
+      Source file:   Device/Source/ARM/startup_stm32f10x_ld.s
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Include file:  RTE_Driver/Config/RTE_Device.h
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
