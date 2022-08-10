@@ -28,10 +28,6 @@ Project File Date:  08/09/2022
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
 assembling startup_stm32f10x_ld.s...
-printtt.c(2): warning: In file included from...
-./printtt.h(6): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
 printtt.c(14): warning: format string is not a string literal [-Wformat-nonliteral]
                  vsprintf(buff, msg,args); // variable arguments in buffer
                                 ^~~
@@ -39,16 +35,11 @@ printtt.c(18): warning: implicitly declaring library function 'strlen' with type
                  for(uint32_t i=0; i<(strlen(buff)); i++){
                                       ^
 printtt.c(18): note: include the header <string.h> or explicitly provide a declaration for 'strlen'
-printtt.c(23): warning: no newline at end of file [-Wnewline-eof]
-                         
-                         ^
-4 warnings generated.
+printtt.c(24): warning: no newline at end of file [-Wnewline-eof]
+                 
+                 ^
+3 warnings generated.
 compiling printtt.c...
-main.c(2): warning: In file included from...
-./printtt.c(2): warning: In file included from...
-./printtt.h(6): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
 main.c(2): warning: In file included from...
 ./printtt.c(14): warning: format string is not a string literal [-Wformat-nonliteral]
                  vsprintf(buff, msg,args); // variable arguments in buffer
@@ -57,14 +48,20 @@ main.c(2): warning: In file included from...
                  for(uint32_t i=0; i<(strlen(buff)); i++){
                                       ^
 ./printtt.c(18): note: include the header <string.h> or explicitly provide a declaration for 'strlen'
-./printtt.c(23): warning: no newline at end of file [-Wnewline-eof]
-                         
-                         ^
-main.c(9): warning: no previous extern declaration for non-static variable 'myTicks' [-Wmissing-variable-declarations]
+./printtt.c(24): warning: no newline at end of file [-Wnewline-eof]
+                 
+                 ^
+main.c(11): warning: no previous extern declaration for non-static variable 'myTicks' [-Wmissing-variable-declarations]
 int myTicks=0;
     ^
-main.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 int myTicks=0;
+^
+main.c(12): warning: no previous extern declaration for non-static variable 'msTicks' [-Wmissing-variable-declarations]
+int msTicks=0;
+    ^
+main.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int msTicks=0;
 ^
 5 warnings generated.
 compiling main.c...
@@ -81,7 +78,7 @@ linking...
 Not enough information to list image symbols.
 Not enough information to list load addresses in the image map.
 Finished: 2 information, 0 warning and 1 error messages.
-".\Objects\timers_delay.axf" - 1 Error(s), 10 Warning(s).
+".\Objects\timers_delay.axf" - 1 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -108,10 +105,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device/Source/ARM/startup_stm32f10x_ld.s
+      Source file:   Device/Source/system_stm32f10x.c
       Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
-      Source file:   Device/Source/system_stm32f10x.c
-      Source file:   Device/Source/ARM/startup_stm32f10x_ld.s
 Target not created.
 Build Time Elapsed:  00:00:00
 </pre>

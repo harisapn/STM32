@@ -5,8 +5,11 @@
 void TIM3_IRQHandler(void);
 void dUm(int mikros);
 void dms(int ms);
+void delayMs(int ms);
+void SystickHandler(void);
 
 int myTicks=0;
+int msTicks=0;
 int main(){
 	
 	// clock enable
@@ -19,11 +22,13 @@ int main(){
 	
 	NVIC_EnableIRQ(TIM3_IRQn);
 	
+	// SysTick_Config(SystemCoreClock/1000);  delays using system clock
+	
 	while (1)
 	{
 		
 		printMsg("hello \n");
-		
+		//delayMs(1000);
 		dUm(2000);
 		
 	}
@@ -38,6 +43,9 @@ void TIM3_IRQHandler(void){
 	
 }
 
+void SystickHandler(void){
+	msTicks++;} // ticks between two interrupt
+
 void dUm(int mikros){
 	
 	TIM3->CR1 |=TIM_CR1_CEN;
@@ -49,6 +57,10 @@ void dUm(int mikros){
 	myTicks=0;
 	while(myTicks<(ms*1000));
 	}
+	
+	void delayMs(int ms){ // function for delay with system clock
+		msTicks=0;
+		while(msTicks<ms);}
 	
 	
 	

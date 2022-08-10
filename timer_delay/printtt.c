@@ -21,3 +21,4 @@ void printMsg(char *msg,...){
 			 while(!(USART1->SR & USART_SR_TXE));}
 		 }
 			 
+		 
