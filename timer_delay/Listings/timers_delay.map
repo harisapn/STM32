@@ -8,16 +8,12 @@ Section Cross References
     main.o(.text.printMsg) refers to strlen.o(.text) for strlen
     main.o(.ARM.exidx.text.printMsg) refers to main.o(.text.printMsg) for [Anonymous Symbol]
     main.o(.text.main) refers to main.o(.text.__NVIC_EnableIRQ) for __NVIC_EnableIRQ
-    main.o(.text.main) refers to system_stm32f10x.o(.data.SystemCoreClock) for SystemCoreClock
-    main.o(.text.main) refers to main.o(.text.SysTick_Config) for SysTick_Config
     main.o(.text.main) refers to main.o(.rodata.str1.1) for .L.str
     main.o(.text.main) refers to main.o(.text.printMsg) for printMsg
     main.o(.text.main) refers to printtt.o(.text.printMsg) for printMsg
     main.o(.text.main) refers to main.o(.text.dUm) for dUm
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     main.o(.ARM.exidx.text.__NVIC_EnableIRQ) refers to main.o(.text.__NVIC_EnableIRQ) for [Anonymous Symbol]
-    main.o(.text.SysTick_Config) refers to main.o(.text.__NVIC_SetPriority) for __NVIC_SetPriority
-    main.o(.ARM.exidx.text.SysTick_Config) refers to main.o(.text.SysTick_Config) for [Anonymous Symbol]
     main.o(.text.dUm) refers to main.o(.bss.myTicks) for myTicks
     main.o(.ARM.exidx.text.dUm) refers to main.o(.text.dUm) for [Anonymous Symbol]
     main.o(.text.TIM3_IRQHandler) refers to main.o(.bss.myTicks) for myTicks
@@ -28,7 +24,6 @@ Section Cross References
     main.o(.ARM.exidx.text.dms) refers to main.o(.text.dms) for [Anonymous Symbol]
     main.o(.text.delayMs) refers to main.o(.bss.msTicks) for msTicks
     main.o(.ARM.exidx.text.delayMs) refers to main.o(.text.delayMs) for [Anonymous Symbol]
-    main.o(.ARM.exidx.text.__NVIC_SetPriority) refers to main.o(.text.__NVIC_SetPriority) for [Anonymous Symbol]
     printtt.o(.text.printMsg) refers to vsprintf.o(.text) for vsprintf
     printtt.o(.text.printMsg) refers to strlen.o(.text) for strlen
     printtt.o(.ARM.exidx.text.printMsg) refers to printtt.o(.text.printMsg) for [Anonymous Symbol]

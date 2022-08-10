@@ -1,0 +1,114 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Harisa Polutan-Nisic, student, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+C:\Users\Harisa\Desktop\STM32 programming\ADC Conversion\ADC_conversion.uvprojx
+Project File Date:  08/10/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+main.c(1): warning: // comments are not allowed in this language [-Wcomment]
+#include "stm32f10x.h"  // Device header
+                        ^
+main.c(6): warning: no previous extern declaration for non-static variable 'msTicks' [-Wmissing-variable-declarations]
+int msTicks=0;
+    ^
+main.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int msTicks=0;
+^
+main.c(8): warning: no previous extern declaration for non-static variable 'val' [-Wmissing-variable-declarations]
+ int val=0;
+     ^
+main.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+ int val=0;
+ ^
+main.c(9): warning: no previous extern declaration for non-static variable 'val2' [-Wmissing-variable-declarations]
+ int val2=0;
+     ^
+main.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+ int val2=0;
+ ^
+main.c(17): warning: extra ';' outside of a function [-Wextra-semi]
+;
+^
+main.c(40): warning: incompatible pointer to integer conversion passing 'void (void)' to parameter of type 'IRQn_Type' (aka 'enum IRQn') [-Wint-conversion]
+        NVIC_EnableIRQ(ADC1_2_IRQHandler);
+                       ^~~~~~~~~~~~~~~~~
+C:/Users/Harisa/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include\core_cm3.h(1508): note: passing argument to parameter 'IRQn' here
+__STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
+                                                ^
+main.c(67): warning: implicit declaration of function 'printMsg' [-Wimplicit-function-declaration]
+                printMsg("ADC1 at Channel[5] is: %d",val);
+                ^
+main.c(75): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                        val=ADC1 -> DR; // reading from Data register cleans the ADC_SR_EOC flag which is set by hardware
+                           ~~~~~~~~~^~
+main.c(108): warning: no newline at end of file [-Wnewline-eof]
+        
+        ^
+main.c(87): warning: no previous prototype for function 'map' [-Wmissing-prototypes]
+float map(float FROM_MAX, float FROM_MIN, float TO_MAX, float TO_MIN, float VAL_TO_MAP){
+      ^
+main.c(87): note: declare 'static' if the function is not intended to be used outside of this translation unit
+float map(float FROM_MAX, float FROM_MIN, float TO_MAX, float TO_MIN, float VAL_TO_MAP){
+^
+static 
+10 warnings generated.
+compiling main.c...
+linking...
+Program Size: Code=7924 RO-data=848 RW-data=4 ZI-data=1640  
+".\Objects\ADC_conversion.axf" - 0 Error(s), 10 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack
+                Keil.STM32F1xx_DFP.2.4.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/STM32F103C6
+  ./RTE/_Target_1
+  C:/Users/Harisa/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/Harisa/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Source file:   Device/Source/ARM/startup_stm32f10x_ld.s
+      Source file:   Device/Source/system_stm32f10x.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
