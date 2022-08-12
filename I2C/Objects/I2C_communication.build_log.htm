@@ -26,46 +26,109 @@ Project File Date:  08/12/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
-Build target 'Target 1'
-assembling startup_stm32f10x_ld.s...
-main.c(3): warning: this function declaration is not a prototype [-Wstrict-prototypes]
-void i2c_init();
-             ^
-              void
-main.c(5): warning: this function declaration is not a prototype [-Wstrict-prototypes]
-void i2c_read();
-             ^
-              void
-main.c(7): warning: no previous extern declaration for non-static variable 'msTicks' [-Wmissing-variable-declarations]
-int msTicks=0;
-    ^
-main.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int msTicks=0;
+Rebuild target 'Target 1'
+main.c(18): warning: no previous extern declaration for non-static variable 'msTicks' [-Wmissing-variable-declarations]
+uint32_t msTicks=0;
+         ^
+main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32_t msTicks=0;
 ^
-main.c(18): warning: // comments are not allowed in this language [-Wcomment]
-        RCC->APB1ENR |= RCC_APB1ENR_I2C1EN; //enable I2C1
-                                            ^
-main.c(16): warning: no previous prototype for function 'i2c_init' [-Wmissing-prototypes]
-void i2c_init(){
-     ^
-main.c(3): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
-void i2c_init();
-     ^
-              void
-main.c(16): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
-void i2c_init(){
-             ^
-main.c(99): warning: no newline at end of file [-Wnewline-eof]
+main.c(19): warning: no previous extern declaration for non-static variable 'buffcount' [-Wmissing-variable-declarations]
+uint16_t buffcount=0;
+         ^
+main.c(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint16_t buffcount=0;
+^
+main.c(43): error: expected ')'
+                        i2c_write(EEPROM_ADDRESS,0x04,0x60);
+                                  ^
+main.c(12): note: expanded from macro 'EEPROM_ADDRESS'
+#define EEPROM_ADDRESS 0x1010000;
+                                ^
+main.c(43): note: to match this '('
+                        i2c_write(EEPROM_ADDRESS,0x04,0x60);
+                                 ^
+main.c(43): error: expected expression
+                        i2c_write(EEPROM_ADDRESS,0x04,0x60);
+                                                ^
+main.c(45): error: expected ')'
+                        i2c_write(EEPROM_ADDRESS,0x05,0x61);
+                                  ^
+main.c(12): note: expanded from macro 'EEPROM_ADDRESS'
+#define EEPROM_ADDRESS 0x1010000;
+                                ^
+main.c(45): note: to match this '('
+                        i2c_write(EEPROM_ADDRESS,0x05,0x61);
+                                 ^
+main.c(45): error: expected expression
+                        i2c_write(EEPROM_ADDRESS,0x05,0x61);
+                                                ^
+main.c(47): error: expected ')'
+                i2c_write(EEPROM_ADDRESS,0x06,0x62);
+                          ^
+main.c(12): note: expanded from macro 'EEPROM_ADDRESS'
+#define EEPROM_ADDRESS 0x1010000;
+                                ^
+main.c(47): note: to match this '('
+                i2c_write(EEPROM_ADDRESS,0x06,0x62);
+                         ^
+main.c(47): error: expected expression
+                i2c_write(EEPROM_ADDRESS,0x06,0x62);
+                                        ^
+main.c(49): error: expected ')'
+                i2c_write(EEPROM_ADDRESS,0x07,0x63);
+                          ^
+main.c(12): note: expanded from macro 'EEPROM_ADDRESS'
+#define EEPROM_ADDRESS 0x1010000;
+                                ^
+main.c(49): note: to match this '('
+                i2c_write(EEPROM_ADDRESS,0x07,0x63);
+                         ^
+main.c(49): error: expected expression
+                i2c_write(EEPROM_ADDRESS,0x07,0x63);
+                                        ^
+main.c(51): error: expected ')'
+                i2c_read(EEPROM_ADDRESS, 4)     
+                         ^
+main.c(12): note: expanded from macro 'EEPROM_ADDRESS'
+#define EEPROM_ADDRESS 0x1010000;
+                                ^
+main.c(51): note: to match this '('
+                i2c_read(EEPROM_ADDRESS, 4)     
+                        ^
+main.c(51): error: expected expression
+                i2c_read(EEPROM_ADDRESS, 4)     
+                                       ^
+main.c(35): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        int x=0;
+            ^
+main.c(102): warning: comparison of integers of different signs: 'uint32_t' (aka 'unsigned int') and 'int' [-Wsign-compare]
+        while(msTicks<ms);}
+              ~~~~~~~^~~
+main.c(184): warning: no newline at end of file [-Wnewline-eof]
         
         ^
-main.c(9): warning: no previous extern declaration for non-static variable 'temp' [-Wmissing-variable-declarations]
+main.c(21): warning: no previous extern declaration for non-static variable 'i2c_buff' [-Wmissing-variable-declarations]
+uint8_t i2c_buff[bufflen];
+        ^
+main.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t i2c_buff[bufflen];
+^
+main.c(24): warning: no previous extern declaration for non-static variable 'buff' [-Wmissing-variable-declarations]
+uint8_t buff[bufflen];
+        ^
+main.c(24): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t buff[bufflen];
+^
+main.c(29): warning: no previous extern declaration for non-static variable 'temp' [-Wmissing-variable-declarations]
 int temp;
     ^
-main.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+main.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 int temp;
 ^
-8 warnings generated.
+8 warnings and 10 errors generated.
 compiling main.c...
+assembling startup_stm32f10x_ld.s...
 RTE/Device/STM32F103C6/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
 __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
             ^
@@ -74,9 +137,7 @@ __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9}
     ^
 1 warning generated.
 compiling system_stm32f10x.c...
-linking...
-Program Size: Code=952 RO-data=268 RW-data=4 ZI-data=1640  
-".\Objects\I2C_communication.axf" - 0 Error(s), 9 Warning(s).
+".\Objects\I2C_communication.axf" - 10 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -107,6 +168,7 @@ Package Vendor: Keil
       Source file:   Device/Source/ARM/startup_stm32f10x_ld.s
       Source file:   Device/Source/system_stm32f10x.c
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Target not created.
 Build Time Elapsed:  00:00:00
 </pre>
 </body>

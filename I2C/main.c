@@ -1,17 +1,64 @@
 #include "stm32f10x.h"
+#include "stdint.h"
 
-void i2c_init();
+//global 
+#define bufflen 20
+// i2C states
+#define I2C_WRITING 0x05
+#define I2C_READING 0x08
+#define I2C_INTERRUPTED 0x09
+#define I2C_FREE 0x07
+#define I2C_BUSY 0x10
+#define EEPROM_ADDRESS 0x1010000;
+
+void i2c_init(void);
 void i2c_write(uint8_t device_address, uint8_t mem_address, uint8_t data);
-void i2c_read();
+void i2c_read(uint8_t device_address, uint8_t len);
 void delayMS(int ms);
-int msTicks=0;
+uint32_t msTicks=0;
+uint16_t buffcount=0;
+
+uint8_t i2c_buff[bufflen];
+
+
+uint8_t buff[bufflen];
+
+
+
 void SysTick_Handler(void);
 int temp;
 
 
 int main(){
 	SysTick_Config(SystemCoreClock/1000);
-}
+	i2c_init();
+	int x=0;
+	while(1){
+		
+		if(!(GPIOA->IDR & GPIO_IDR_IDR2)){ // check if button is pressed
+			
+			if (x>0){}
+		else {
+			
+			i2c_write(EEPROM_ADDRESS,0x04,0x60);
+			delayMS(2);
+			i2c_write(EEPROM_ADDRESS,0x05,0x61);
+			delayMS(2);
+		i2c_write(EEPROM_ADDRESS,0x06,0x62);
+			delayMS(2);
+		i2c_write(EEPROM_ADDRESS,0x07,0x63);
+			delayMS(2);
+		i2c_read(EEPROM_ADDRESS, 4)	
+			
+			x++;
+	}
+	
+	
+	
+	
+	
+	
+} } }
 
 void i2c_init(){
 	
@@ -89,6 +136,44 @@ void SysTick_Handler(void){
 		
 	}
 			
+	
+	void i2c_read(uint8_t device_address, uint8_t len){
+		
+		temp=0;
+		
+		i2c_buff[0]=0x00;
+		
+		RCC->APB1ENR|=RCC_AHBENR_DMA1EN; //enable DMa
+		I2C1->CR2 |=I2C_CR2_DMAEN;
+		
+		I2C1->CR1 |=I2C_CR1_ACK; //enable ACK bit
+		DMA1_Channel5->CMAR =(uint32_t)i2c_buff; // take the address of buff -memory
+		DMA1_Channel5->CPAR=(uint32_t)&I2C1->DR; // take the address of data register
+		DMA1_Channel5->CNDTR=len; // givwe the length of data to be transmitted
+		
+		DMA1_Channel5->CCR |= DMA_CCR1_MINC | DMA_CCR1_TCIE | DMA_CCR1_EN; //memory incremen mode, tTC interrupt, 
+		
+		I2C1->CR1 |=I2C_CR1_START; // start bit
+		while(!(I2C1->SR1 & I2C_SR1_SB)){} // check strat bit
+		
+		I2C1->DR = device_address +1 ; // adding one because of reading
+			
+			while(!(I2C1->SR1 & I2C_SR1_ADDR))
+			{}
+				
+			temp=I2C1->SR2;
+			
+				while(!(DMA1->ISR & DMA_ISR_TCIF5)){
+				}
+				
+				I2C1->CR1 |=I2C_CR1_STOP;
+				
+			}
+			
+		
+		
+		
+		
 		
 			
 		
