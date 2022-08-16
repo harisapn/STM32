@@ -38,9 +38,7 @@ void delayMs(uint32_t ms){
 	void SysTick_Handler(void){
 		msTicks++; }
 	
-		void setClockto32Mhz(){
-			
-		}
+		
 		
 	void setupISP(void){
 		
@@ -70,5 +68,55 @@ void delayMs(uint32_t ms){
 		
 		
 		
-		
+		void setClockto32Mhz(){
+			
+			RCC->CR |= RCC_CR_HSEON; // turn on external crystal
+			while(!(RCC->CR & RCC_CR_HSERDY)); // wait for HSE to be ready
+			
+			/*"The implementation of this prefetch buffer makes a faster CPU execution possible as the
+CPU fetches one word at a time with the next word readily available in the prefetch buffer.
+This implies that the acceleration ratio will be of the order of 2 assuming that the code is
+aligned at a 64-bit boundary for the jumps.  */
+			FLASH->ACR|=FLASH_ACR_PRFTBE;
+			
+			
+				FLASH->ACR &= ~(FLASH_ACR_LATENCY); //add latency for 28Mhz
+			FLASH->ACR |=FLASH_ACR_LATENCY_0;
+			
+			// configure RCC and PLL settigns while PLL is of
+			// this is the heart of changing the clock
+			
+			RCC->CFGR &= ~(RCC_CFGR_PLLMULL | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC); //reset all bits
+			
+			// PLLMULL bit is PLL multiplier
+			//PLLXTPRE bit is PREDIV1 (is it divided by 1 or 2), HSE clock
+			//PLLSRC bit is for source, PREDIV1
+			
+			
+			RCC->CFGR |= RCC_CFGR_PLLMULL7 | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC;
+			
+			//for peripherals
+			
+			//AHB not divided
+			
+			RCC->CFGR &= ~(RCC_CFGR_HPRE); //AHB not divided
+			RCC->CFGR &= ~(RCC_CFGR_PPRE1); //APB1 not divided
+			RCC-> CFGR &= ~(RCC_CFGR_PPRE2); // APB2 nor divided
+			
+			// turn on PLL and check if it is ready
+			
+			RCC->CR |= RCC_CR_PLLON;
+			while(!(RCC->CR & RCC_CR_PLLRDY));
+			
+			// set PLL as system clock and check status SWS
+			RCC->CFGR |=RCC_CFGR_SW_1;
+			
+			while(!(RCC->CFGR & RCC_CFGR_SWS_1)); 
+			
+			
+			
+			
+			
+			
+	}
 		
