@@ -27,6 +27,51 @@ Project File Date:  08/15/2022
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
+main.c(4): warning: // comments are not allowed in this language [-Wcomment]
+//------------------- |GLOBAL VAR| ---------------
+^
+main.c(12): warning: no previous extern declaration for non-static variable 'msTicks' [-Wmissing-variable-declarations]
+uint32_t msTicks=0;
+         ^
+main.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32_t msTicks=0;
+^
+main.c(19): warning: this function declaration is not a prototype [-Wstrict-prototypes]
+void clearArray();
+               ^
+                void
+main.c(40): warning: no previous prototype for function 'clearArray' [-Wmissing-prototypes]
+void clearArray(){
+     ^
+main.c(19): note: this declaration is not a prototype; add 'void' to make it a prototype for a zero-parameter function
+void clearArray();
+     ^
+                void
+main.c(40): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+void clearArray(){
+               ^
+main.c(98): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
+        void SysTick_Handler(void){
+             ^
+main.c(98): note: declare 'static' if the function is not intended to be used outside of this translation unit
+        void SysTick_Handler(void){
+        ^
+        static 
+main.c(143): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                                FLASH->ACR &= ~(FLASH_ACR_LATENCY); //add latency for 28Mhz
+                                           ~~ ^~~~~~~~~~~~~~~~~~~~
+main.c(182): warning: no newline at end of file [-Wnewline-eof]
+                
+                ^
+main.c(13): warning: no previous extern declaration for non-static variable 'LED_ARRAY' [-Wmissing-variable-declarations]
+uint8_t LED_ARRAY[LEDCOUNT][4];
+        ^
+main.c(13): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t LED_ARRAY[LEDCOUNT][4];
+^
+9 warnings generated.
+compiling main.c...
+assembling startup_stm32f10x_ld.s...
 RTE/Device/STM32F103C6/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
 __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
             ^
@@ -35,34 +80,9 @@ __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9}
     ^
 1 warning generated.
 compiling system_stm32f10x.c...
-assembling startup_stm32f10x_ld.s...
-main.c(4): warning: // comments are not allowed in this language [-Wcomment]
-//------------------- |GLOBAL VAR| ---------------
-^
-main.c(5): warning: no previous extern declaration for non-static variable 'msTicks' [-Wmissing-variable-declarations]
-uint32_t msTicks=0;
-         ^
-main.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t msTicks=0;
-^
-main.c(38): warning: no previous prototype for function 'SysTick_Handler' [-Wmissing-prototypes]
-        void SysTick_Handler(void){
-             ^
-main.c(38): note: declare 'static' if the function is not intended to be used outside of this translation unit
-        void SysTick_Handler(void){
-        ^
-        static 
-main.c(83): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                                FLASH->ACR &= ~(FLASH_ACR_LATENCY); //add latency for 28Mhz
-                                           ~~ ^~~~~~~~~~~~~~~~~~~~
-main.c(122): warning: no newline at end of file [-Wnewline-eof]
-                
-                ^
-5 warnings generated.
-compiling main.c...
 linking...
 Program Size: Code=1464 RO-data=284 RW-data=4 ZI-data=1640  
-".\Objects\SPI Communication.axf" - 0 Error(s), 6 Warning(s).
+".\Objects\SPI Communication.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
